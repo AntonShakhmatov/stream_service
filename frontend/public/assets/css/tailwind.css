@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+/* Client global styles */
+.title {
+  @apply text-white text-lg font-bold;
+}
+.my-container {
+  @apply px-4 md:px-16;
+}
+
+/*!* Admin global styles *!*/
+/*.table {*/
+/*  @apply w-full mt-4 rounded-sm shadow-lg text-base;*/
+/*}*/
+/*.table-head {*/
+/*  @apply text-left rounded-sm;*/
+/*}*/
+
+/*.table-heading {*/
+/*  @apply px-2 py-1 max-w-115px overflow-ellipsis overflow-hidden whitespace-nowrap;*/
+/*}*/
+/*.table-data {*/
+/*  @apply px-2 max-w-115px overflow-ellipsis overflow-hidden whitespace-nowrap;*/
+/*}*/
+
+.vue-notification {
+  position: absolute;
+  right: 0;
+  padding: 10px;
+  margin: 0 5px 5px;
+
+  width: 200px;
+
+  font-size: 12px;
+
+  color: #ffffff;
+  background: #44a4fc;
+  border-left: 5px solid #187fe7;
+}
+
+.warn {
+  background: #ffb648;
+  border-left-color: #f48a06;
+}
+
+.error {
+  background: #e54d42;
+  border-left-color: #b82e24;
+}
+
+.success {
+  background: #68cd86;
+  border-left-color: #42a85f;
+}

@@ -1,0 +1,1 @@
+import{_ as o}from"./Permission.vue_vue_type_script_setup_true_lang-24ab1726.js";import"./multiselect-82d1182f.js";import"./index-5e60d8d5.js";import"./disclosure-3a0c664b.js";import"./_baseIteratee-5808ab78.js";export{o as default};

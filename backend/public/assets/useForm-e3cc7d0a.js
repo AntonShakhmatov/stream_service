@@ -1,0 +1,1 @@
+import{f as i,T as a}from"./index-5e60d8d5.js";function f(u,e,c="put",n){const o=i(),r={onSuccess:s=>{s.props.message&&o.success(s.props.message)},onError:s=>{s&&o.error(Object.values(s)[0])},...n},t=a(u);return{form:t,submit:()=>{t==null||t.submit(c,e,r)}}}export{f as u};
