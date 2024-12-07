@@ -77,14 +77,14 @@
               :title="room?.gender"
             />
                 <img
-                    :src="`/assets/flags/${room?.img_flag}`"
+                    :src="`../../assets/flags/${room?.img_flag}`"
                     :alt="room?.location"
                     :title="room?.location"
                     v-if="room?.img_flag"
                     class="h-3 w-3 !bg-cover !bg-no-repeat"
                 />
                 <img
-                    src="/assets/flags/unspecified-country.png"
+                    src="../../assets/flags/unspecified-country.png"
                     class="h-3 w-3 !bg-cover !bg-no-repeat"
                     :title="room?.location"
                     :alt="room?.location"
@@ -184,7 +184,7 @@ export default {
       return `background-image: url(${this.room.preview_image});`
     },
     chatLogo() {
-        return `background-image: url('/assets/chats/${this.getChats[0][this.room.chat]}.png')`;
+        return `background-image: url('../../assets/chats/${this.getChats[0][this.room.chat]}.png')`;
     },
     statusClass() {
         switch (this.room.status) {

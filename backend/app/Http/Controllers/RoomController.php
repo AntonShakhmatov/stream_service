@@ -330,4 +330,15 @@ class RoomController extends Controller
             Room::query()->where('status', '!=', 'offline')->whereNotNull('flag')->count(),
         );
     }
+
+    public function getProfileRoom($id)
+    {
+        $room = FeedRooms::where('id', $id)->first();
+
+        if (!$room) {
+            return response()->json(['message' => 'Room not found'], 404);
+        }
+
+        return response()->json($room);
+    }
 }

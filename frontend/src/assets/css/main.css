@@ -1,0 +1,22 @@
+@import "@vueform/multiselect/themes/default.css";
+
+/*@import '_checkbox-radio-switch.css';*/
+/*@import '_progress.css';*/
+/*@import '_scrollbars.css';*/
+/*@import '_table.css';*/
+
+/*@import 'styles/_basic.css';*/
+/*@import 'styles/_white.css';*/
+
+@import 'tailwind/_base.css';
+@import 'tailwind/_components.css';
+
+/* .absolute {
+    position: static !important;
+}
+
+.transform {
+    height: 30vh;
+} */
+
+/*Удалить после инициализации проблемы*/

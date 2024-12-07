@@ -24,14 +24,14 @@
                             <span class="text-white">{{ room.age }}</span>
                             <font-awesome-icon :icon="['fas', genderIcon()]" class="block text-[12px] text-white" :title="gender()" />
                             <img
-                                :src="`/assets/flags/${room?.img_flag}`"
+                                :src="`../../assets/flags/${room?.img_flag}`"
                                 :alt="room?.location"
                                 :title="room?.location"
                                 v-if="room?.img_flag"
                                 class="h-3 w-3 !bg-cover !bg-no-repeat"
                             />
                             <img
-                                src="/assets/flags/unspecified-country.png"
+                                src="../../assets/flags/unspecified-country.png"
                                 class="h-3 w-3 !bg-cover !bg-no-repeat"
                                 :title="room.location"
                                 :alt="room.location"

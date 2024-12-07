@@ -11,7 +11,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasApiTokens,HasRoles;
+    use HasFactory, Notifiable, HasApiTokens, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -45,21 +46,25 @@ class User extends Authenticatable
 
     public function saved_rooms()
     {
-        return $this->hasMany(FeedFollowersRoom::class);
+        // return $this->hasMany(FeedFollowersRoom::class);
+        return $this->hasMany(FeedFollowersRoom::class, 'user_id', 'id');
     }
 
     public function liked_rooms()
     {
-        return $this->hasMany(FeedLikedRoom::class);
+        // return $this->hasMany(FeedLikedRoom::class);
+        return $this->hasMany(FeedLikedRoom::class, 'user_id', 'id');
     }
 
     public function hidden_rooms()
     {
-        return $this->hasMany(FeedHiddenRooms::class);
+        // return $this->hasMany(FeedHiddenRooms::class);
+        return $this->hasMany(FeedHiddenRooms::class, 'user_id', 'id');
     }
 
     public function room_notes()
     {
-        return $this->hasMany(FeedRoomNote::class);
+        // return $this->hasMany(FeedRoomNote::class);
+        return $this->hasMany(FeedRoomNote::class, 'user_id', 'id');
     }
 }

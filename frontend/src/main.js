@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import App from './Pages/App.vue'
 import router from './router'
 import store from "./store";
 import VueCookies from 'vue-cookies';
@@ -67,10 +67,9 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 
-
-library.add(faHouse, faCircleXmark,faGear, faCommentDots, faStar,faUsers, faChartBar, faAddressBook, faSignInAlt, faUserPlus, faBars, faAngleDoubleLeft, faChevronDown, faCircle, faChartLine,
-    faWindowRestore, faChevronLeft, faChevronRight, faFire, faEye,faMars, faVenus,faTransgender,faVenusMars, faTableCells, faTableCellsLarge,faTimes,faSortUp,faSortDown,faXmark,faPlus,faMinus,faFaceSadCry,
-    faList,faTrash,faAngleDoubleRight, faHeart, faThumbsUp, faLink, faInstagram, faFacebook, faTwitter, faCircleChevronDown, faCircleChevronUp);
+library.add(faHouse, faCircleXmark, faGear, faCommentDots, faStar, faUsers, faChartBar, faAddressBook, faSignInAlt, faUserPlus, faBars, faAngleDoubleLeft, faChevronDown, faCircle, faChartLine,
+    faWindowRestore, faChevronLeft, faChevronRight, faFire, faEye, faMars, faVenus, faTransgender, faVenusMars, faTableCells, faTableCellsLarge, faTimes, faSortUp, faSortDown, faXmark, faPlus, faMinus, faFaceSadCry,
+    faList, faTrash, faAngleDoubleRight, faHeart, faThumbsUp, faLink, faInstagram, faFacebook, faTwitter, faCircleChevronDown, faCircleChevronUp);
 
 app.use(router);
 app.use(store);

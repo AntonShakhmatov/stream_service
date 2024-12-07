@@ -61,7 +61,7 @@ export default {
     <MainLayout>
         <div class="h-screen w-full flex items-center justify-center">
             <form @submit.prevent="submit" class="flex flex-col gap-5 p-5 rounded-md bg-secondary-color w-96">
-                <img src="@/assets/images/logo.png" alt="MyCamStars.com">
+                <img src="../assets/images/logo.png" alt="MyCamStars.com">
                 <div>
                     <InputLabel for="email" value="Email" class="text-white" />
 

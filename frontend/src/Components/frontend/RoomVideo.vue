@@ -208,7 +208,4 @@ export default {
     padding: 20%;
 }
 
-.button-style {
-    @apply p-2 bg-bg-color rounded-md hover:bg-third-color;
-}
 </style>

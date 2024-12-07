@@ -25,14 +25,14 @@
         >
             <div class="absolute top-0 left-0">
                 <img
-                    src="/assets/images/new.png"
+                    src="../../assets/images/new.png"
                     class="h-10 w-10 bg-cover bg-no-repeat"
                     alt="New room"
                     v-if="room?.new && !rank"
                 />
-                <img src="/assets/images/first.png" alt="First" v-if="rank === 1">
-                <img src="/assets/images/second.png" alt="second" v-if="rank === 2">
-                <img src="/assets/images/third.png" alt="third" v-if="rank === 3">
+                <img src="../../assets/images/first.png" alt="First" v-if="rank === 1">
+                <img src="../../assets/images/second.png" alt="second" v-if="rank === 2">
+                <img src="../../assets/images/third.png" alt="third" v-if="rank === 3">
             </div>
             <button @click.stop="newWindow" class="text-white py-1 px-3 rounded-md text-lg absolute right-1">
                 <font-awesome-icon :icon="['fas', 'window-restore']" />

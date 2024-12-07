@@ -25,7 +25,7 @@
         </a>
       </li>
       <li class="text-white hover:bg-primary-color hover:bg-opacity-75 p-2 hover:cursor-pointer">
-        <a class="link" href="#">
+        <a class="link" to="#">
             <font-awesome-icon :icon="['fass', 'users']" />
           Profiles
         </a>

@@ -1,14 +1,21 @@
 <template>
-<!--    <title :html="`${room?.username} > ${room?.chat} model ❤️ MyCamStars`"></title>-->
     <MainLayout>
-        <div class="min-h-screen flex gap-5 mt-5 flex-wrap-reverse xl:flex-nowrap">
+        <div class="min-h-screen flex flex-col gap-5 mt-5 xl:flex-row">
             <InfoSection :room="room" :stats="roomStats" v-if="isLoading" />
-            <section class="w-full flex flex-col">
-                <h1 class="title">Live room</h1>
-                <ProfileVideo :room="room" v-if="isLoading" />
-<!--                <ProfilePhotoSection :photos="photos" v-if="isLoading" />-->
-                <ProfileChart :room="room" :roomStats="roomStats" v-if="isLoading" />
-            </section>
+            <!-- Bio (25%) -->
+            <div class="bio-section w-full xl:w-1/4 p-5 bg-secondary-color rounded-md text-white">
+                <h1 class="text-xl font-bold mb-3">{{ room.username }}</h1>
+                <p class="mb-2"><strong>Age:</strong> {{ room.age }}</p>
+                <p class="mb-2"><strong>Gender:</strong> {{ room.gender }}</p>
+                <p class="mb-2"><strong>Ethnicity:</strong> {{ room.flag }}</p>
+                <p class="mb-2"><strong>Viewers:</strong> {{ room.viewers }}</p>
+                <p class="mb-2"><strong>Subject:</strong> {{ room.subject }}</p>
+            </div>
+
+            <!-- Video (75%) -->
+            <div class="video-section w-full xl:w-3/4 p-5 bg-secondary-color rounded-md">
+                <ProfileVideo v-if="room && room.chat_url" :room="room" />
+            </div>
         </div>
     </MainLayout>
 </template>
@@ -19,6 +26,7 @@ import InfoSection from "@/components/frontend/Profile/InfoSection.vue";
 import ProfileVideo from "@/components/frontend/Profile/ProfileVideo.vue";
 import ProfilePhotoSection from "@/components/frontend/Profile/ProfilePhotoSection.vue";
 import ProfileChart from "@/components/frontend/Profile/ProfileChart.vue";
+import PageContent from "@/components/PageContent.vue";
 import {mapMutations,mapActions, mapGetters} from "vuex";
 
 export default {

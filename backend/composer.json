@@ -2,17 +2,26 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
+        "inertiajs/inertia-laravel": "*",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "mongodb/laravel-mongodb": "^4.0",
         "predis/predis": "^2.2",
-        "spatie/laravel-query-builder": "^5.6"
+        "spatie/laravel-query-builder": "^5.6",
+        "barryvdh/laravel-dompdf": "^2.0",
+        "maatwebsite/excel": "^3.1",
+        "spatie/laravel-permission": "^5.11",
+        "spatie/laravel-settings": "^3.2",
+        "tightenco/ziggy": "^1.8"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -49,8 +58,8 @@
             "@php artisan view:cache",
             "composer dump-autoload -o",
             "@php artisan up",
-           "sudo chgrp -R www-data storage bootstrap/cache && sudo chmod -R ug+rwx storage bootstrap/cache && sudo chmod -R 775 storage && sudo chmod -R 775 bootstrap/cache && sudo chown -R $USER:www-data storage && sudo chown -R $USER:www-data bootstrap/cache && sudo chmod -R gu+w storage && sudo chmod -R guo+w storage",
-            "cd ../frontend && sudo npm run build"
+            "sudo chgrp -R www-data storage bootstrap/cache && sudo chmod -R ug+rwx storage bootstrap/cache && sudo chmod -R 775 storage && sudo chmod -R 775 bootstrap/cache && sudo chown -R $USER:www-data storage && sudo chown -R $USER:www-data bootstrap/cache && sudo chmod -R gu+w storage && sudo chmod -R guo+w storage",
+            "cd ../frontend && sudo npm run build:all"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

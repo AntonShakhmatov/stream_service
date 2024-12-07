@@ -212,7 +212,7 @@
 import BaseDisclosure from "@/components/partials/BaseDisclosure.vue";
 import BaseCheckbox from "@/components/partials/BaseCheckbox.vue";
 import _ from "lodash";
-import Multiselect from '@vueform/multiselect'
+import Multiselect from '@vueform/multiselect';
 import {mapGetters, mapMutations, mapActions} from "vuex";
 
 export default {
