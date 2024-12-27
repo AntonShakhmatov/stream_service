@@ -36,22 +36,6 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return new UserResource($request->user());
 });
 
-// Route::get('/admin', [AdminController::class]);
-
-// Route::prefix('admin')->group(function () {
-// Route::resource('affiliate-links', App\Http\Controllers\Admin\AffiliateLinkController::class)->except(['create', 'edit']);
-// Route::get('/aff', [AffiliateLinkController::class, 'index']);
-// Route::post('/aff', [AffiliateLinkController::class, 'store']);
-// Route::delete('/aff/{id}', [AffiliateLinkController::class, 'destroy']);
-// });
-
-
-// Route::prefix('aff')->group(function () {
-//     Route::get('/', [AffiliateLinkController::class, 'index'])->name('aff.index');
-//     Route::get('/create', [AffiliateLinkController::class, 'create'])->name('aff.create');
-//     Route::post('/', [AffiliateLinkController::class, 'store'])->name('aff.store');
-// });
-
 Route::get('/rooms/wp-api', [RoomController::class, 'wp_api']);
 
 Route::resource('/rooms', RoomController::class);

@@ -21,7 +21,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: './dist', // Путь для билда в assets
+    outDir: './dist',
     assetsDir: 'assets',
     manifest: true,
     rollupOptions: {

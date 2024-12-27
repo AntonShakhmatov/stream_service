@@ -1,9 +1,9 @@
 {
-  "name": "mycamstars-frontend",
+  "name": "frontend",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build:assets": "vite build --config vite.config.assets.js",
     "build:backend": "vite build --config vite.config.backend.js",
     "build:all": "npm run build:assets && npm run build:backend",

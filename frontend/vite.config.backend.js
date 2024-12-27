@@ -78,7 +78,8 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '/': 'https://admin.mycamstars.com', // прокси для запросов к Laravel
+            // '/': 'https://admin.mycamstars.com', // прокси для запросов к Laravel
+            '/': 'http://localhost:8000', // прокси для запросов к Laravel
         }
     }
 });

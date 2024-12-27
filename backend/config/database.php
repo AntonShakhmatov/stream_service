@@ -96,7 +96,7 @@ return [
             'driver' => 'mongodb',
             'host' => env('MONGO_DB_HOST', 'localhost'),
             'port' => env('MONGO_DB_PORT', 27017),
-            'database' => env('MONGO_DB_DATABASE', 'test'),
+            'database' => env('MONGO_DB_DATABASE', 'laravel'),
             // 'username' => env('MONGO_DB_USERNAME', 'sail'),
             // 'password' => env('MONGO_DB_PASSWORD', 'password'),
         ],

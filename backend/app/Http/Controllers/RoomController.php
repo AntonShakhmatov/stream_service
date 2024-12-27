@@ -105,9 +105,9 @@ class RoomController extends Controller
                 AllowedFilter::callback('tag', fn(Builder $query, $value) => $query->whereIn('tags', $value)),
             ])->defaultSort('sort_order');
 
-        $rooms = $queryBuilder
-            ->where('status', '!=', 0)
-            ->where('chat', '!=', null)
+        $rooms = FeedRooms::query()
+            ->where('status', 0)
+            ->whereNull('chat')
             ->select([
                 'id',
                 'username',

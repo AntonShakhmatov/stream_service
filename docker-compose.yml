@@ -1,0 +1,115 @@
+services:
+  mysql:
+    image: 'mysql/mysql-server:8.0'
+    ports:
+      - '${FORWARD_DB_PORT:-3306}:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ROOT_HOST: '${DB_HOST}'
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - 'sail-mysql:/var/lib/mysql'
+      - './backend/docker/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+    networks:
+      - app-network
+    healthcheck:
+      test:
+        - CMD
+        - mysqladmin
+        - ping
+        - '-p${DB_PASSWORD}'
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: 'redis:alpine'
+    ports:
+      - '${FORWARD_REDIS_PORT:-6379}:6379'
+    volumes:
+      - 'sail-redis:/data'
+    networks:
+      - app-network
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - ping
+      retries: 3
+      timeout: 5s
+
+  mongodb:
+    image: 'mongo:7.0'
+    restart: always
+    ports:
+      - '${FORWARD_MONGO_DB_PORT:-27017}:27017'
+    environment:
+      MONGO_INITDB_DATABASE: '${MONGO_DB_DATABASE}'
+    volumes:
+      - 'sail-mongodb:/data/mdb'
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./backend:/var/www/html/backend
+      - ./backend/vendor:/var/www/html/backend/vendor
+    command: >
+      sh -c "php artisan serve --host=0.0.0.0 --port=8000 && php artisan create:admin admin@gmail.com testforadmin && php artisan feed-parser:parse-all"
+    depends_on:
+      - mysql
+      - mongodb
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+    env_file:
+      - .env
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./frontend:/var/www/html/frontend
+      - /var/www/html/frontend/node_modules
+    command: >
+      sh -c "npm install && npm ci && npm run build:all && npm run dev"
+    ports:
+      - "5173:5173"
+    networks:
+      - app-network
+    environment:
+      - HOST=0.0.0.0
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/backend.example.com.conf:/etc/nginx/conf.d/backend.example.com.conf
+      - ./nginx/frontend.example.com.conf:/etc/nginx/conf.d/frontend.example.com.conf
+      - ./backend/public:/var/www/html/backend/public
+      - ./frontend/dist:/var/www/html/frontend/dist
+    depends_on:
+      - backend
+      - frontend
+    ports:
+      - "81:81"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db-data:
+  sail-redis:
+  sail-mongodb:
+  sail-mysql:
+  mongo-data:

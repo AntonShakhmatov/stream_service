@@ -9,6 +9,8 @@ use App\Models\Room;
 use App\Models\TopRatedRoom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Log;
+
 
 class TopRatedRoomController extends Controller
 {
@@ -20,7 +22,7 @@ class TopRatedRoomController extends Controller
         // Фильтруем комнаты по именам из списка
         $topRatedRooms = FeedRooms::query()
             ->whereIn('username', $favoriteModels)
-            ->where('status', '!=', 0)
+            ->where('status', 0)
             ->orderBy('sort_order')
             ->get();
 

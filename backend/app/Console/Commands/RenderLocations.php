@@ -41,16 +41,20 @@ class RenderLocations extends Command
     {
         set_time_limit(0);
         Room::query()->where('status', '!=', 'offline')
-            ->leftJoin('country_aliases', 'country_aliases.name', 'like', "%location%")
+            ->leftJoin('country_aliases', 'country_aliases.country_id', '=', 'countries.id')
             ->join('countries', 'countries.id', '=', 'country_aliases.country_id')
+            ->where('country_aliases.name', 'like', '%location%')
             ->select([
-                'rooms.id', 'countries.flag  as country_flag'
-            ])->get()->unique('id')->map(function ($room) {
+                'rooms.id',
+                'countries.flag as country_flag'
+            ])
+            ->get()->unique('id')->map(function ($room) {
                 $room->update(['flag' => $room->country_flag]);
             });
-        $this->info('flaged rooms '.Room::query()->whereNotNull('flag')->count());
 
-        $this->info("flags generated");
+        $this->info('Flaged rooms: ' . Room::query()->whereNotNull('flag')->count());
+
+        $this->info("Flags generated");
         return 1;
     }
 }

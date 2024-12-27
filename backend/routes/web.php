@@ -38,14 +38,7 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 Route::middleware('auth:web')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Route::get('/country', [CountryController::class, 'index'])->name('country.index');
-
     Route::resource('/room', RoomsController::class)->names('room');
-
-    // Route::resource('/aff', AffiliateLinkController::class)->names('aff');
-    // Route::get('/aff', [AffiliateLinkController::class, 'index']);
-    // Route::post('/aff', [AffiliateLinkController::class, 'store']);
-    // Route::delete('/aff/{id}', [AffiliateLinkController::class, 'destroy']);
 
 
     Route::prefix('aff')->group(function () {
